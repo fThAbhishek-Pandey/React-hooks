@@ -1,8 +1,22 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### UseEffect 
+- useEffect is a hook which provide us to use sideeffect .
+###### SideEffect function
+ - this is the fuction which is depends on other fuction and we need to re-run that fuction after running that fuction .
+ ```js
+ useEffect(()=>{
+  first
+  return ()=>{
+    second
+  }
+ }, [third])
+ ```
+ - first --> side-effect funcion
+ - second --> cleanup function 
+ - third --> dependies array
+ #### Variation of useeffect :
+ 1. #### runs on every renders
+ ```js
+ useEffect(()=>{
+      alert("i am useEffect");
+ })
+ ```
