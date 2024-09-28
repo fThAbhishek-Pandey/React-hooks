@@ -48,7 +48,7 @@
     alert("i am useeffect sidefuction of variaton 02");
   },[])
  ```
- 3. #### runs on every renders
+ 3. #### runs on every renders of dependies
  ```js
  function Variation03() {
   const [count, setCount] = useState(0);
@@ -67,7 +67,7 @@
   )
 }
  ```
- 4. #### runs on every renders
+ 4. #### if any dependies change , runs all dependies and rerenders .
  ```js
  function Variation04() {
   const [count, setCount] = useState(0);
@@ -95,7 +95,7 @@
   )
 }
  ```
- 5. #### runs on every renders
+ 5. #### Clean function runs when dependies UI change
  ```js
  function Variation05() {
   const [count, setCount] = useState(0);
