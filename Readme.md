@@ -21,6 +21,8 @@
 ```
 ### UseEffect 
 - useEffect is a hook which provide us to use sideeffect .
+- After every re-render with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.
+- The list of all reactive values referenced inside of the setup code. Reactive values include props, state, and all the variables and functions declared directly inside your component body.
 ###### SideEffect function
  - this is the fuction which is depends on other fuction and we need to re-run that fuction after running that fuction .
  ```js
@@ -125,3 +127,77 @@
   )
 }
  ```
+### usecontext 
+It looks like you're working with React Context API. Here's a step-by-step guide:
+
+### Step 1: Create Context
+
+```javascript
+import React, { createContext, useContext, useState } from 'react';
+
+// 1. Create a context
+const MyContext = createContext();
+```
+
+### Step 2: Create a Provider Component
+
+This will wrap your components and pass values to them.
+
+```javascript
+// 2. Create a Provider component
+const MyProvider = ({ children }) => {
+  const [value, setValue] = useState("Hello from Context!");
+
+  return (
+    <MyContext.Provider value={{ value, setValue }}>
+      {children}
+    </MyContext.Provider>
+  );
+};
+
+export default MyProvider;
+```
+
+### Step 3: Wrap All Children in the Provider
+
+In your main component or `index.js`, wrap all child components with `MyProvider`.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import MyProvider from './MyProvider';
+
+ReactDOM.render(
+  <MyProvider>
+    <App />
+  </MyProvider>,
+  document.getElementById('root')
+);
+```
+
+### Step 4: Consume the Context in a Child Component
+
+Use `useContext` to access the context values in any child component.
+
+```javascript
+import React, { useContext } from 'react';
+import MyContext from './MyProvider';
+
+const ChildComponent = () => {
+  const { value, setValue } = useContext(MyContext);
+
+  return (
+    <div>
+      <p>{value}</p>
+      <button onClick={() => setValue("Updated Context Value!")}>
+        Update Value
+      </button>
+    </div>
+  );
+};
+
+export default ChildComponent;
+```
+
+
